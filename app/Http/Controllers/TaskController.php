@@ -19,7 +19,15 @@ class TaskController extends Controller
     }
 
     public function store(Request $request){
-        $task = Task::create($request->all());
+        Task::create($request->all());
+
+        return redirect('/task');
+    }
+
+    public function destroy($id){
+
+        $task = Task::findOrFail($id);
+        $task->delete();
 
         return redirect('/task');
     }
