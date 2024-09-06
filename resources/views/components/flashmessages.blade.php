@@ -1,35 +1,37 @@
 
-@vite('resources/css/app.css')
-
 @session('success')
-<!--<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ $value }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>!-->
-<div class="border-b border-t border-blue-500 bg-blue-100 px-4 py-3 text-blue-700" role="alert">
-  <p class="font-bold"> {{ $value }}</p>
-  <p class="text-sm"> {{ $value }}</p>
+<div id="alertDiv" class="mb-4 mt-4 flex items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 dark:border-green-800 dark:bg-gray-800 dark:text-green-400" role="alert">
+  <span class="sr-only">Sucesso</span>
+  <div>
+    <span class="font-medium">Sucesso!</span> {{ $value }}
+  </div>
 </div>
 @endsession
       
 @session('error')
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{ $value }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div id="alertDiv" class="mb-4 mt-4 flex items-center rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <span class="sr-only">Sucesso</span>
+  <div>
+    <span class="font-medium">Sucesso!</span> {{ $value }}
+  </div>
 </div>
 @endsession
        
 @session('warning')
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    {{ $value }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div id="alertDiv" class="mb-4 mt-4 flex items-center rounded-lg border border-yellow-300 bg-yellow-50 p-4 text-sm text-yellow-800 dark:border-yellow-800 dark:bg-gray-800 dark:text-yellow-400" role="alert">
+  <span class="sr-only">Sucesso</span>
+  <div>
+    <span class="font-medium">Sucesso!</span> {{ $value }}
+  </div>
 </div>
 @endsession
        
 @session('info')
-<div class="alert alert-info alert-dismissible fade show" role="alert">
-    {{ $value }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div id="alertDiv" class="mb-4 mt-4 flex items-center rounded-lg border border-blue-300 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-800 dark:bg-gray-800 dark:text-blue-400" role="alert">
+  <span class="sr-only">Sucesso</span>
+  <div>
+    <span class="font-medium">Sucesso!</span> {{ $value }}
+  </div>
 </div>
 @endsession
       

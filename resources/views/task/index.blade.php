@@ -72,3 +72,8 @@
         }
     }
 </script>
+
+<script>
+    const target = document.getElementById("alertDiv");
+    window.onload = setInterval(() => target.style.opacity = '0', 3000)
+</script>
