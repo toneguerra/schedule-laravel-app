@@ -36,8 +36,9 @@
                     @enderror
                 </div>
 
-                <div class="mt-4 flex flex-col">
-                    <input type="submit" value="Salvar Tarefa" />
+                <div class="mb-4 mt-4 flex justify-end gap-2">
+                    <input type="submit" value="Salvar Tarefa" class = "rounded-md bg-indigo-500 p-2 text-indigo-50 shadow-md shadow-indigo-500/50 hover:bg-indigo-400 min-w-48"/>
+                    <a href="{{route('task.index')}}" class = "text-center rounded-md bg-red-500 p-2 text-red-50 shadow-md shadow-red-500/50 hover:bg-red-400 min-w-48">Cancelar</a>
                 </div>
             </form>
         </section>

@@ -35,6 +35,7 @@
                             <th class="rounded-lg">id</th>
                             <th class="rounded-lg">Description</th>
                             <th class="rounded-lg">Date</th>
+                            <th class="rounded-lg">Restantes</th>
                             <th class="rounded-lg">Action</th>
                         </tr>
                     </thead>
@@ -44,6 +45,12 @@
                             <td class="rounded-lg bg-indigo-100 text-center text-sm font-bold">{{ $task->id }}</td>
                             <td class="border border-gray-200 pl-1 pr-1">{{ $task->description }}</td>
                             <td class="border border-gray-200 pl-1 pr-1">{{ Carbon\Carbon::parse($task->date)->format('d/m/Y') }}</td>
+                            <td class="border border-gray-200 pl-1 pr-1">
+                                <?php
+                                $orig = Carbon\Carbon::now()->format('Y-m-d'); 
+                                echo Carbon\Carbon::parse($orig)->diff($task->date);
+                                ?>
+                            </td>
                             <td class="border border-gray-200 pl-1 pr-1" >
                                 <a href="#" onclick="deleteTask( {{ $task->id }} )">
                                     <x-heroicon-s-trash class="w-5 text-red-500 hover:text-red-400"/>
