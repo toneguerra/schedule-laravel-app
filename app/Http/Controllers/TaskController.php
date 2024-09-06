@@ -21,7 +21,7 @@ class TaskController extends Controller
     public function store(Request $request){
         Task::create($request->all());
 
-        return redirect('/task');
+        return redirect('/task')->with('success', 'User created successfully!');;
     }
 
     public function destroy($id){

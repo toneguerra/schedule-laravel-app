@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @vite('resources/css/app.css')
+    @vite('resources/css/app.css','resources/js/app.js')
 
     <title>Agenda de Tarefas</title>
 </head>
@@ -22,6 +22,9 @@
                     Adicionar Tarefa
                 </a>
             </div>
+
+
+            @include('components.flashmessages')
 
             
             <article>
@@ -42,9 +45,13 @@
                             <td class="border border-gray-200 pl-1 pr-1">{{ $task->description }}</td>
                             <td class="border border-gray-200 pl-1 pr-1">{{ Carbon\Carbon::parse($task->date)->format('d/m/Y') }}</td>
                             <td class="border border-gray-200 pl-1 pr-1" >
-                                <a href="/task/{{ $task->id }}">
+                                <a href="#" onclick="deleteTask( {{ $task->id }} )">
                                     <x-heroicon-s-trash class="w-5 text-red-500 hover:text-red-400"/>
                                 </a>
+                                <form id="form-destroy-{{$task->id}}" action="{{ route('task.destroy', $task->id ) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -54,5 +61,14 @@
         </section>
     </main>
     
+    
 </body>
 </html>
+
+<script>
+    function deleteTask(id){
+        if(confirm("Tem certeza que deseja EXCLUIR o registro?")){
+            document.getElementById('form-destroy-'+id).submit();
+        }
+    }
+</script>
