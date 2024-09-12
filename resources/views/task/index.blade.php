@@ -26,7 +26,12 @@
 
             @include('components.flashmessages')
 
-            
+            <form action="{{ route('task.search') }}" method="POST">
+                @csrf
+                <input type="text" name="description" id="description" class="rounded-md border border-indigo-600 p-2" value="{{ $txtSrc }}" placeholder="Procure pela Descrição">
+                <input type="submit" value="Procurar" />
+            </form>
+
             <article>
                 <h2 class="text-xl text-indigo-700">Tarefas Cadastradas</h2>
                 <table class="mt-4 w-full table-auto">
@@ -51,14 +56,19 @@
                                 echo Carbon\Carbon::parse($orig)->diff($task->date);
                                 ?>
                             </td>
-                            <td class="border border-gray-200 pl-1 pr-1" >
+                            <td class="border border-gray-200 pl-1 pr-1 flex flex-row gap-2" >
+                                <a href="{{route('task.edit', $task->id)}}" >
+                                    <x-lucide-edit class="w-5 text-ambar-500 hover:text-red-400"/>
+                                </a>
+
                                 <a href="#" onclick="deleteTask( {{ $task->id }} )">
                                     <x-heroicon-s-trash class="w-5 text-red-500 hover:text-red-400"/>
                                 </a>
-                                <form id="form-destroy-{{$task->id}}" action="{{ route('task.destroy', $task->id ) }}" method="POST">
+                                <form class="d-none" id="form-destroy-{{$task->id}}" action="{{ route('task.destroy', $task->id ) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                 </form>
+
                             </td>
                         </tr>
                         @endforeach
@@ -82,5 +92,9 @@
 
 <script>
     const target = document.getElementById("alertDiv");
-    window.onload = setInterval(() => target.style.opacity = '0', 3000)
+    function hide(){
+        target.style.opacity = '0'
+        target.style.display = 'none';
+    }
+    window.onload = setInterval(() => hide(), 3000)
 </script>
