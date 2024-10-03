@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Minha Agenda de Tarefas') }}
+        </h2>
+    </x-slot>
 
-    @vite('resources/css/app.css','resources/js/app.js')
 
-    <title>Agenda de Tarefas</title>
-</head>
 <body class="bg-slate-100">
 
     <main class="flex justify-center">
         <section class="bg-slate-2 mt-4 w-3/4 p-4 shadow-lg shadow-indigo-200/50">
-
-            <h1 class="text-2xl text-indigo-800">Minha Agenda de Tarefas</h1>
-
-            <hr class="mb-2 mt-2">
 
             <div class="flex justify-end">
                 <a href="/task/create" class="rounded-md bg-indigo-500 p-2 text-indigo-50 shadow-md shadow-indigo-500/50 hover:bg-indigo-400">
@@ -41,6 +35,7 @@
                             <th class="rounded-lg">Description</th>
                             <th class="rounded-lg">Date</th>
                             <th class="rounded-lg">Restantes</th>
+                            <th class="rounded-lg">Email</th>
                             <th class="rounded-lg">Action</th>
                         </tr>
                     </thead>
@@ -56,6 +51,8 @@
                                 echo Carbon\Carbon::parse($orig)->diff($task->date);
                                 ?>
                             </td>
+
+                            <td>{{$task->user->email}}</td>
                             <td class="border border-gray-200 pl-1 pr-1 flex flex-row gap-2" >
                                 <a href="{{route('task.edit', $task->id)}}" >
                                     <x-lucide-edit class="w-5 text-ambar-500 hover:text-red-400"/>
@@ -79,8 +76,10 @@
     </main>
     
     
+
 </body>
-</html>
+
+</x-app-layout>
 
 <script>
     function deleteTask(id){
