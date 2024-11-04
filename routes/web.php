@@ -18,12 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/task', [TaskController::class, 'index'])->middleware(['auth'])->name('task.index');
-Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
-Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
-Route::delete('/task/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
-Route::get('/task/{id}', [TaskController::class, 'edit'])->name('task.edit');
-Route::put('/task/update/{id}', [TaskController::class, 'update'])->name('task.update');
-Route::post('/task/search/', [TaskController::class, 'search'])->name('task.search');
+Route::get('/tasks', [TaskController::class, 'index'])->middleware(['auth'])->name('task.index');
+Route::get('/task/create', [TaskController::class, 'create'])->middleware(['auth'])->name('task.create');
+Route::post('/task/store', [TaskController::class, 'store'])->middleware(['auth'])->name('task.store');
+Route::delete('/task/{id}', [TaskController::class, 'destroy'])->middleware(['auth'])->name('task.destroy');
+Route::get('/task/{id}', [TaskController::class, 'edit'])->middleware(['auth'])->name('task.edit');
+Route::put('/task/update/{id}', [TaskController::class, 'update'])->middleware(['auth'])->name('task.update');
+Route::post('/task/search/', [TaskController::class, 'search'])->middleware(['auth'])->name('task.search');
 
 require __DIR__.'/auth.php';

@@ -72,6 +72,12 @@ class TaskController extends Controller
 
         $task = Task::findOrFail($id);
 
+        if (!Gate::allows('is-owner', $task)) {
+            //abort(403);
+            return redirect('/task')
+                ->with('error', 'Você não pode editar uma tarefa que não é sua!');
+        }
+
         return view('task.edit', compact('task'));
     }
 
@@ -80,7 +86,8 @@ class TaskController extends Controller
         
         if (!Gate::allows('is-owner', $task)) {
             //abort(403);
-            return redirect('/task')->with('error', 'Você não pode editar uma tarefa que não é sua!');
+            return redirect('/task')
+                ->with('error', 'Você não pode editar uma tarefa que não é sua!');
         }
 
         $rules = [

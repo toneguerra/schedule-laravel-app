@@ -53,6 +53,7 @@
                             </td>
 
                             <td>{{$task->user->email}}</td>
+                            
                             <td class="border border-gray-200 pl-1 pr-1 flex flex-row gap-2" >
                                 <a href="{{route('task.edit', $task->id)}}" >
                                     <x-lucide-edit class="w-5 text-ambar-500 hover:text-red-400"/>
